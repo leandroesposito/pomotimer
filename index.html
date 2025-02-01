@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-box box">
+        <div class="config-container">
+            <button class="config-btn">⚙</button>
+            <div class="config-items-container box" style="display: none">
+                <div class="config-item">
+                    <label for="work-time">Work time</label>
+                    <input type="number" id="work-time" min="1" max="60" value="20">
+                </div>
+                <div class="config-item">
+                    <label for="rest-time">Rest time</label>
+                    <input type="number" id="rest-time" min="1" max="60" value="5">
+                </div>
+
+                <div class="config-item">
+                    <label for="notify">Notification</label>
+                    <input type="checkbox" id="notify" checked>
+                </div>
+                <div class="config-item">
+                    <label for="ring">Sound alert</label>
+                    <input type="checkbox" id="ring" checked>
+                </div>
+            </div>
+        </div>
+        <div class="main-container box">
+            <div class="timer-container">
+                <div class="timer-title">
+
+                </div>
+                <div class="iteration">
+                    #0
+                </div>
+                <div class="timer">
+                    00:00:00 / 0
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="swap-btn">⏭</button>
+                <button class="pause-resume-btn">📵</button>
+                <!-- <button class="reset-btn">Reset</button> -->
+            </div>
+        </div>
+        <div class="totals-container">
+            <div class="total-container total-work box">
+                <div class="total-timet-name">
+                    Total Work:
+                </div>
+                <div class="timer">
+                    00:00:00
+                </div>
+            </div>
+            <div class="total-container total-rest box">
+                <div class="total-timet-name">
+                    Total Rest:
+                </div>
+                <div class="timer">
+                    00:00:00
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

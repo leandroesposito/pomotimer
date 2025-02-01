@@ -1,0 +1,139 @@
+:root {
+    --background-color-light: hsl(0, 100%, 67%);
+    --background-color: hsl(0, 100%, 63%);
+    --border-color: hsl(0, 100%, 57%);
+    /* --samepl: hsl(184, 42%, 38%);
+    --background-color-light: hsl(184, 42%, 67%);
+    --background-color: hsl(184, 42%, 63%);
+    --border-color: hsl(184, 42%, 57%); */
+    --border-radius: 1rem;
+    --font-color: hwb(0 12% 88%);
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background-color-light);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--font-color);
+    align-items: center;
+}
+
+.main-box {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 2rem;
+    max-width: fit-content;
+}
+
+.box {
+    background-color: var(--background-color);
+    border: 5px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+button,
+input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--background-color-light);
+    box-shadow: 1px 1px 5px;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--background-color);
+    color: black;
+}
+
+button:active {
+    scale: 0.9;
+    box-shadow: 0 0 1px;
+}
+
+input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+    appearance: none;
+    background-color: hsl(115, 0%, 70%);
+    border-radius: .2rem;
+}
+
+input[type="checkbox"]:checked {
+    appearance: none;
+    background-color: hsl(115, 100%, 70%);
+    box-shadow: 1px 1px 0;
+    scale: 0.9;
+}
+
+input[type="number"] {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}
+
+.main-container {
+    margin: 1rem 0;
+}
+
+.main-container>div {
+    margin: 1rem;
+}
+
+.iteration {
+    font-size: 1.5rem;
+}
+
+.config-items-container {
+    padding: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.config-item {
+    flex-basis: 50%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.config-item label {
+    margin-right: 1rem;
+}
+
+.totals-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.total-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.totals-container .timer {
+    opacity: 0;
+}
+
+.totals-container .timer:hover {
+    opacity: 1;
+}
