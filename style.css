@@ -100,16 +100,9 @@ input[type="number"] {
 .config-items-container {
     padding: 1rem;
     margin: 1rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.config-item {
-    flex-basis: 50%;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
 .config-item label {

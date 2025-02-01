@@ -140,7 +140,7 @@ function updateTimer() {
 
 configButton.addEventListener("click", () => {
     if (configContainer.style.display === "none") {
-        configContainer.style.display = "flex";
+        configContainer.style.display = "grid";
     }
     else {
         configContainer.style.display = "none";
