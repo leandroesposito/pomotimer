@@ -12,7 +12,7 @@ let resetButton = document.querySelector(".reset-btn");
 let workTimeInput = document.querySelector("#work-time");
 let restTimeInput = document.querySelector("#rest-time");
 let iterationContainer = document.querySelector(".iteration");
-
+let body = document.body;
 
 class Timer {
     constructor() {
@@ -115,7 +115,6 @@ function updateTimer() {
     }
 
     if (soundAlertCheckbox.checked && !beeped && Math.floor(currentTimer.getPartialTime().getTime() / 1000 / 60) === timeLimit) {
-        console.log("BEEPING", new Date());
         alarm(300, 200, 5);
         beeped = true;
 
@@ -146,31 +145,29 @@ configButton.addEventListener("click", () => {
 });
 
 pauseResumeButton.addEventListener("click", (event) => {
-    const target = event.target;
-    if (target.textContent === "📵") {
-        if ("Notification" in window && Notification.permission !== "granted") {
-            Notification.requestPermission();
-        }
-        currentTimer = workTimer;
-        target.textContent = "⏸︎";
-        workTimer.run();
-        iterationContainer.textContent = `#${iteration}`;
-    }
-    else if (target.textContent === "⏸︎") {
-        target.textContent = "▶";
-        swapButton.style.display = "none";
-        restTimer.run();
-        workTimer.pause();
-    }
-    else {
-        swapButton.style.removeProperty("display");
-        target.textContent = "⏸︎";
-        workTimer.run();
-        restTimer.stop();
-    }
+    handlePlayPauseButtonPress();
 });
 
 swapButton.addEventListener("click", (event) => {
+    handleSwapButtonClick();
+});
+
+body.addEventListener("keyup", (event) => {
+    const key = event.code;
+
+    if (key === "Space") {
+        if (currentTimer === null || currentTimer === workTimer) {
+            handlePlayPauseButtonPress();
+        }
+    }
+    else if (key === "Enter" && swapButton.style.display !== "none") {
+        handleSwapButtonClick();
+    }
+
+    event.preventDefault();
+});
+
+function handleSwapButtonClick() {
     currentTimer.stop();
 
     if (currentTimer === workTimer) {
@@ -192,7 +189,32 @@ swapButton.addEventListener("click", (event) => {
 
     currentTimer.run();
     beeped = false;
-})
+}
+
+function handlePlayPauseButtonPress() {
+    const button = pauseResumeButton;
+    if (button.textContent === "📵") {
+        if ("Notification" in window && Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+        currentTimer = workTimer;
+        button.textContent = "⏸︎";
+        workTimer.run();
+        iterationContainer.textContent = `#${iteration}`;
+    }
+    else if (button.textContent === "⏸︎") {
+        button.textContent = "▶";
+        swapButton.style.display = "none";
+        restTimer.run();
+        workTimer.pause();
+    }
+    else {
+        swapButton.style.removeProperty("display");
+        button.textContent = "⏸︎";
+        workTimer.run();
+        restTimer.stop();
+    }
+}
 
 function alarm(frecuency, duration, repetitions) {
     for (let i = 0; i < repetitions; i++) {
