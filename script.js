@@ -198,34 +198,6 @@ swapButton.addEventListener("click", (event) => {
     beeped = false;
 })
 
-/**
- * variables
- * tiempo total trabajando
- * tiempo total descansando
- * tiempo parcial trabajando
- * tiempo parcial descansando
- * numero de iteración
- *
- * tener 2 tiempos totales
- * trabajando y descansando
- * sumar tiempo a trabajando
- * habilitar boton de descanso a los 25 minutos
- * seguir sumando tiempo a los 25 parciales y al total
- * cuando se aprete el boton de descansar ...
- * ... agregar el tiempo parcial a una lista
- * ... arrancar el tiempo de descanso
- * al llegar a los 5 minutos habilitar el boton de trabajar
- * cuando se aprete el boton de trabajar ...
- * ... agregar el tiempo parcial a una lista
- * ... arrancar el tiempo de trabajo
- * sumar 1 a la iteracion
- *
- * mantener un boton de switch que cambie de trabajo a descanso
- * pausando trabajo y sumando descanso pero sin reiniciar trabajo
- *
- * hacer que todos los botones y relojes sean visibles solo on hover
- */
-
 function alarm(frecuency, duration, repetitions) {
     for (let i = 0; i < repetitions; i++) {
         beep(frecuency, duration, duration * i * 2);
@@ -242,7 +214,3 @@ function beep(frecuency, duration, start) {
     oscillator.start(start / 1000);
     oscillator.stop((start + duration) / 1000);
 }
-
-
-
-/// ARREGLAR EL RESET CUANDO PAUSED Y PROGRAMAR EL SWAP
