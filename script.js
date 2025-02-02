@@ -13,8 +13,6 @@ let workTimeInput = document.querySelector("#work-time");
 let restTimeInput = document.querySelector("#rest-time");
 let iterationContainer = document.querySelector(".iteration");
 
-let working = true;
-
 
 class Timer {
     constructor() {
@@ -176,7 +174,6 @@ swapButton.addEventListener("click", (event) => {
     currentTimer.stop();
 
     if (currentTimer === workTimer) {
-        working = false;
         pauseResumeButton.style.display = "none";
         currentTimer = restTimer;
         document.documentElement.style.setProperty("--background-color-light", "hsl(184, 42%, 67%)");
@@ -184,7 +181,6 @@ swapButton.addEventListener("click", (event) => {
         document.documentElement.style.setProperty("--border-color", "hsl(184, 42%, 57%)");
     }
     else {
-        working = true;
         pauseResumeButton.style.removeProperty("display");
         currentTimer = workTimer;
         document.documentElement.style.setProperty("--background-color-light", "hsl(0, 100%, 67%)");
