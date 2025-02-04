@@ -173,16 +173,16 @@ function handleSwapButtonClick() {
     if (currentTimer === workTimer) {
         pauseResumeButton.style.display = "none";
         currentTimer = restTimer;
-        document.documentElement.style.setProperty("--background-color-light", "hsl(184, 42%, 67%)");
-        document.documentElement.style.setProperty("--background-color", "hsl(184, 42%, 63%)");
-        document.documentElement.style.setProperty("--border-color", "hsl(184, 42%, 57%)");
+        document.documentElement.style.setProperty("--background-color-light", "hsl(184, 20%, 67%)");
+        document.documentElement.style.setProperty("--background-color", "hsl(184, 20%, 63%)");
+        document.documentElement.style.setProperty("--border-color", "hsl(184, 20%, 57%)");
     }
     else {
         pauseResumeButton.style.removeProperty("display");
         currentTimer = workTimer;
-        document.documentElement.style.setProperty("--background-color-light", "hsl(0, 100%, 67%)");
-        document.documentElement.style.setProperty("--background-color", "hsl(0, 100%, 63%)");
-        document.documentElement.style.setProperty("--border-color", "hsl(0, 100%, 57%)");
+        document.documentElement.style.setProperty("--background-color-light", "hsl(0, 70%, 67%)");
+        document.documentElement.style.setProperty("--background-color", "hsl(0, 70%, 63%)");
+        document.documentElement.style.setProperty("--border-color", "hsl(0, 70%, 57%)");
         iteration++;
         iterationContainer.textContent = `#${iteration}`;
     }
@@ -204,12 +204,14 @@ function handlePlayPauseButtonPress() {
     }
     else if (button.textContent === "⏸︎") {
         button.textContent = "▶";
+        document.documentElement.style.setProperty("--background-color-light", "hsl(0, 0%, 67%)");
         swapButton.style.display = "none";
         restTimer.run();
         workTimer.pause();
     }
     else {
         swapButton.style.removeProperty("display");
+        document.documentElement.style.setProperty("--background-color-light", "hsl(0, 70%, 67%)");
         button.textContent = "⏸︎";
         workTimer.run();
         restTimer.stop();
