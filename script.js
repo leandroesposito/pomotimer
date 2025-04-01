@@ -117,28 +117,30 @@ function updateTimer() {
   }
 
   if (
-    soundAlertCheckbox.checked &&
-    !beeped &&
     Math.floor(currentTimer.getPartialTime().getTime() / 1000 / 60) ===
-      timeLimit
+      timeLimit &&
+    !beeped
   ) {
-    alarm(300, 200, 5);
     beeped = true;
+    document.title += " +";
 
-    if (
-      "Notification" in window &&
-      Notification.permission === "granted" &&
-      notificationCheckbox.checked
-    ) {
-      let notificationText = "";
-      if (currentTimer === workTimer) {
-        notificationText = "Time to rest!";
-      } else {
-        notificationText = "Time to work!";
+    if (soundAlertCheckbox.checked) {
+      alarm(300, 200, 5);
+      if (
+        "Notification" in window &&
+        Notification.permission === "granted" &&
+        notificationCheckbox.checked
+      ) {
+        let notificationText = "";
+        if (currentTimer === workTimer) {
+          notificationText = "Time to rest!";
+        } else {
+          notificationText = "Time to work!";
+        }
+        const notification = new Notification(notificationText, {
+          requireInteraction: true,
+        });
       }
-      const notification = new Notification(notificationText, {
-        requireInteraction: true,
-      });
     }
   }
 
@@ -182,6 +184,7 @@ function handleSwapButtonClick() {
 
   if (currentTimer === workTimer) {
     pauseResumeButton.style.display = "none";
+    document.title = "Pomotimer [R]";
     currentTimer = restTimer;
     document.documentElement.style.setProperty(
       "--background-color-light",
@@ -197,6 +200,7 @@ function handleSwapButtonClick() {
     );
   } else {
     pauseResumeButton.style.removeProperty("display");
+    document.title = "Pomotimer [W]";
     currentTimer = workTimer;
     document.documentElement.style.setProperty(
       "--background-color-light",
@@ -226,10 +230,12 @@ function handlePlayPauseButtonPress() {
     }
     currentTimer = workTimer;
     button.textContent = "⏸︎";
+    document.title = "Pomotimer [W]";
     workTimer.run();
     iterationContainer.textContent = `#${iteration}`;
   } else if (button.textContent === "⏸︎") {
     button.textContent = "▶";
+    document.title = "Pomotimer [P]";
     document.documentElement.style.setProperty(
       "--background-color-light",
       "hsl(0, 0%, 67%)"
@@ -243,6 +249,7 @@ function handlePlayPauseButtonPress() {
       "--background-color-light",
       "hsl(0, 70%, 67%)"
     );
+    document.title = "Pomotimer [W]";
     button.textContent = "⏸︎";
     workTimer.run();
     restTimer.stop();
