@@ -126,21 +126,22 @@ function updateTimer() {
 
     if (soundAlertCheckbox.checked) {
       alarm(300, 200, 5);
-      if (
-        "Notification" in window &&
-        Notification.permission === "granted" &&
-        notificationCheckbox.checked
-      ) {
-        let notificationText = "";
-        if (currentTimer === workTimer) {
-          notificationText = "Time to rest!";
-        } else {
-          notificationText = "Time to work!";
-        }
-        const notification = new Notification(notificationText, {
-          requireInteraction: true,
-        });
+    }
+
+    if (
+      "Notification" in window &&
+      Notification.permission === "granted" &&
+      notificationCheckbox.checked
+    ) {
+      let notificationText = "";
+      if (currentTimer === workTimer) {
+        notificationText = "Time to rest!";
+      } else {
+        notificationText = "Time to work!";
       }
+      const notification = new Notification(notificationText, {
+        requireInteraction: true,
+      });
     }
   }
 
