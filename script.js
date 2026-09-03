@@ -34,7 +34,7 @@ class Timer {
   pause() {
     this.partialTime = this.getTimeSum(
       this.partialTime,
-      this.getCurrentFragment()
+      this.getCurrentFragment(),
     );
     this.running = false;
   }
@@ -173,7 +173,10 @@ body.addEventListener("keyup", (event) => {
     if (currentTimer === null || currentTimer === workTimer) {
       handlePlayPauseButtonPress();
     }
-  } else if (key === "Enter" && swapButton.style.display !== "none") {
+  } else if (
+    (key === "Enter" || key === "NumpadEnter") &&
+    swapButton.style.display !== "none"
+  ) {
     handleSwapButtonClick();
   }
 
@@ -189,15 +192,15 @@ function handleSwapButtonClick() {
     currentTimer = restTimer;
     document.documentElement.style.setProperty(
       "--background-color-light",
-      "hsl(184, 20%, 67%)"
+      "hsl(184, 20%, 67%)",
     );
     document.documentElement.style.setProperty(
       "--background-color",
-      "hsl(184, 20%, 63%)"
+      "hsl(184, 20%, 63%)",
     );
     document.documentElement.style.setProperty(
       "--border-color",
-      "hsl(184, 20%, 57%)"
+      "hsl(184, 20%, 57%)",
     );
   } else {
     pauseResumeButton.style.removeProperty("display");
@@ -205,15 +208,15 @@ function handleSwapButtonClick() {
     currentTimer = workTimer;
     document.documentElement.style.setProperty(
       "--background-color-light",
-      "hsl(0, 70%, 67%)"
+      "hsl(0, 70%, 67%)",
     );
     document.documentElement.style.setProperty(
       "--background-color",
-      "hsl(0, 70%, 63%)"
+      "hsl(0, 70%, 63%)",
     );
     document.documentElement.style.setProperty(
       "--border-color",
-      "hsl(0, 70%, 57%)"
+      "hsl(0, 70%, 57%)",
     );
     iteration++;
     iterationContainer.textContent = `#${iteration}`;
@@ -239,7 +242,7 @@ function handlePlayPauseButtonPress() {
     document.title = "Pomotimer [P]";
     document.documentElement.style.setProperty(
       "--background-color-light",
-      "hsl(0, 0%, 67%)"
+      "hsl(0, 0%, 67%)",
     );
     swapButton.style.display = "none";
     restTimer.run();
@@ -248,7 +251,7 @@ function handlePlayPauseButtonPress() {
     swapButton.style.removeProperty("display");
     document.documentElement.style.setProperty(
       "--background-color-light",
-      "hsl(0, 70%, 67%)"
+      "hsl(0, 70%, 67%)",
     );
     document.title = "Pomotimer [W]";
     button.textContent = "⏸︎";
